@@ -66,9 +66,9 @@
                                     <version>0.0.1-SNAPSHOT</version>
                                 </annotationProcessorPath>
                             </annotationProcessorPaths>
-                            <testCompilerArgument>
-                                -Xplugin:DatadogCompilerPlugin
-                            </testCompilerArgument>
+                            <compilerArgs>
+                                <arg>-Xplugin:DatadogCompilerPlugin</arg>
+                            </compilerArgs>
                         </configuration>
                     </plugin>
 
