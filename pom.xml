@@ -9,8 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <VERSION>1.3.0-SNAPSHOT</VERSION>
     </properties>
@@ -46,41 +46,31 @@
                     <version>${VERSION}</version>
                     <scope>provided</scope>
                 </dependency>
+                <dependency>
+                    <groupId>com.datadoghq</groupId>
+                    <artifactId>dd-javac-plugin-client</artifactId>
+                    <version>0.0.1-SNAPSHOT</version>
+                </dependency>
             </dependencies>
             <build>
                 <plugins>
-                    <!-- if your maven compiler plugin does not support annotationProcessorPaths param,
-                        declare the plugin as a regular dependency -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.6.1</version>
+                        <version>3.5</version>
                         <configuration>
-
                             <annotationProcessorPaths>
                                 <annotationProcessorPath>
-                                    <groupId>com.dd.ci</groupId>
-                                    <artifactId>JavacPluginTest</artifactId>
-                                    <version>1.0-SNAPSHOT</version>
+                                    <groupId>com.datadoghq</groupId>
+                                    <artifactId>dd-javac-plugin</artifactId>
+                                    <version>0.0.1-SNAPSHOT</version>
                                 </annotationProcessorPath>
                             </annotationProcessorPaths>
-                            <compilerArgs>
-                                <arg>-Xplugin:SourcePathInjector</arg>
-                            </compilerArgs>
-                            <compilerId>eclipse</compilerId>
+                            <testCompilerArgument>
+                                -Xplugin:DatadogCompilerPlugin
+                            </testCompilerArgument>
                         </configuration>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.codehaus.plexus</groupId>
-                                <artifactId>plexus-compiler-eclipse</artifactId>
-                                <version>2.8</version>
-                            </dependency>
-                        </dependencies>
                     </plugin>
-                    <!-- direct "javac" execution would look like
-                        javac -processorpath [path to plugin classes] -Xplugin:SourceFilePathInjector ...
-                        or
-                        javac -cp [path to plugin classes] -Xplugin:SourceFilePathInjector ... -->
 
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
