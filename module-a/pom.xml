@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.datadog.ci.test</groupId>
+        <artifactId>ci-test-project</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.datadog.ci.test</groupId>
+    <artifactId>module-a</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>module-a</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.datadog.ci.test</groupId>
+            <artifactId>module-c</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <properties>
+                        <property>
+                            <name>listener</name>
+                            <value>com.datadog.ci.test.CalculatorRunListener</value>
+                        </property>
+                    </properties>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

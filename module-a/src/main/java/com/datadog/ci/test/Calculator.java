@@ -2,6 +2,10 @@ package com.datadog.ci.test;
 
 public class Calculator {
 
+    static {
+        System.out.println(CommonDependency.INSTANCE);
+    }
+
     public int add(int a, int b) {
         return a + b;
     }
