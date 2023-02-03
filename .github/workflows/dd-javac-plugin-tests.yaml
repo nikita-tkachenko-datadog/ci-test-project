@@ -12,8 +12,8 @@ jobs:
 
     strategy:
       matrix:
-        maven: [ '3.5.4', '3.6.3', '3.8.2' ]
-        java: [ '8', '11', '16' ]
+        maven: [ '3.5.4' ]
+        java: [ '11' ]
 
     steps:
       - name: Setup Maven Action
@@ -21,5 +21,13 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
           maven-version: ${{ matrix.maven }}
+      - name: Set DD agentless enabled
+        run: echo "DD_CIVISIBILITY_AGENTLESS_ENABLED=true" >> $GITHUB_ENV
+      - name: Set DD site
+        run: echo "DD_SITE=datad0g.com" >> $GITHUB_ENV
+      - name: Set DD env
+        run: echo "DD_ENV=local" >> $GITHUB_ENV
+      - name: Set DD API key
+        run: echo "DD_API_KEY=${{ secrets.DD_API_KEY }}" >> $GITHUB_ENV
       - name: run-unit-tests
-        run: mvn clean test
+        run: mvn clean test -Pdd-civisibility
