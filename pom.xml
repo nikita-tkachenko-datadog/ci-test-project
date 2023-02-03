@@ -44,7 +44,6 @@
             </activation>
             <properties>
                 <debug.arg>
-                    -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005
                 </debug.arg>
                 <dd.java.agent.arg>
                     -javaagent:${settings.localRepository}/com/datadoghq/dd-java-agent/${VERSION}/dd-java-agent-${VERSION}.jar

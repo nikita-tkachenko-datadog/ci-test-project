@@ -12,9 +12,13 @@ import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
 
+final class ParameterizedCalculatorTests {}
+
+@Category(ParameterizedCalculatorTests.class)
 @RunWith(JUnitParamsRunner.class)
 public class ParameterizedCalculatorTest {
 

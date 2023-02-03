@@ -1,8 +1,11 @@
 package com.datadog.ci.test;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
+import org.junit.Test;
 import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -33,5 +36,12 @@ public class CalculatorTestSuite {
         System.out.println("Tearing down test suite " + CalculatorTestSuite.class);
         Thread.sleep(50);
     }
+
+//    // TODO as this test case is inside a suite, it is not executed by standard JUnit's runner
+//    @Test
+//    public void testAdditionInsideSuite() {
+//        Calculator c = new Calculator();
+//        assertEquals(42, c.add(21, 21));
+//    }
 
 }

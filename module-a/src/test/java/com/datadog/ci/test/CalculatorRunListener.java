@@ -7,6 +7,7 @@ import org.junit.runner.notification.RunListener;
 public class CalculatorRunListener extends RunListener {
     @Override
     public void testRunStarted(Description description) throws Exception {
+        System.err.println("MY_TEST_ENV_VAR: " + System.getenv("MY_TEST_ENV_VAR"));
         System.out.println("CalculatorRunListener.testRunStarted: " + description);
         Thread.sleep(50);
     }

@@ -7,6 +7,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
@@ -65,6 +66,7 @@ public class CalculatorTest {
         assertEquals(4, c.add(2, 2));
     }
 
+    @Ignore
     @Test
     public void testSubtraction() {
         Calculator c = new Calculator();
@@ -82,5 +84,14 @@ public class CalculatorTest {
         Calculator c = new Calculator();
         assertEquals(12, c.divide(36, 3));
     }
+
+//    public static final class InnerCalculatorTest {
+//        // TODO this test is not executed by JUnit's runner
+//        @Test
+//        public void testAdditionInnerSuite() {
+//            Calculator c = new Calculator();
+//            assertEquals(42, c.add(21, 21));
+//        }
+//    }
 
 }
