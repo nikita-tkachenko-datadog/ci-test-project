@@ -1,0 +1,25 @@
+name: Run dd-javac-plugin tests
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  run-tests:
+    name: run-unit-tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        maven: [ '3.5.4', '3.6.3', '3.8.2' ]
+        java: [ '8', '11', '16' ]
+
+    steps:
+      - name: Setup Maven Action
+        uses: s4u/setup-maven-action@v1.2.1
+        with:
+          java-version: ${{ matrix.java }}
+          maven-version: ${{ matrix.maven }}
+      - name: run-unit-tests
+        run: mvn clean test
