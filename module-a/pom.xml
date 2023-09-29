@@ -6,38 +6,19 @@
 
     <parent>
         <groupId>com.datadog.ci.test</groupId>
-        <artifactId>ci-test-project</artifactId>
+        <artifactId>java-maven-junit4</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.datadog.ci.test</groupId>
-    <artifactId>module-a</artifactId>
+    <artifactId>java-maven-junit4-module-a</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>module-a</name>
+    <packaging>jar</packaging>
 
     <dependencies>
-        <dependency>
-            <groupId>com.datadog.ci.test</groupId>
-            <artifactId>module-c</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <properties>
-                        <property>
-                            <name>listener</name>
-                            <value>com.datadog.ci.test.CalculatorRunListener</value>
-                        </property>
-                    </properties>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <profiles>
+    </profiles>
 
 </project>

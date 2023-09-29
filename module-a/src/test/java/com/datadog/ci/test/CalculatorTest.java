@@ -85,13 +85,4 @@ public class CalculatorTest {
         assertEquals(12, c.divide(36, 3));
     }
 
-//    public static final class InnerCalculatorTest {
-//        // TODO this test is not executed by JUnit's runner
-//        @Test
-//        public void testAdditionInnerSuite() {
-//            Calculator c = new Calculator();
-//            assertEquals(42, c.add(21, 21));
-//        }
-//    }
-
 }

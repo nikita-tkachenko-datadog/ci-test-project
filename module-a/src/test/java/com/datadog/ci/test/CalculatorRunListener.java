@@ -7,7 +7,6 @@ import org.junit.runner.notification.RunListener;
 public class CalculatorRunListener extends RunListener {
     @Override
     public void testRunStarted(Description description) throws Exception {
-        System.err.println("MY_TEST_ENV_VAR: " + System.getenv("MY_TEST_ENV_VAR"));
         System.out.println("CalculatorRunListener.testRunStarted: " + description);
         Thread.sleep(50);
     }
@@ -18,13 +17,11 @@ public class CalculatorRunListener extends RunListener {
         Thread.sleep(50);
     }
 
-    @Override
     public void testSuiteStarted(Description description) throws Exception {
         System.out.println("CalculatorRunListener.testSuiteStarted: " + description);
         Thread.sleep(50);
     }
 
-    @Override
     public void testSuiteFinished(Description description) throws Exception {
         System.out.println("CalculatorRunListener.testSuiteFinished: " + description);
         Thread.sleep(50);

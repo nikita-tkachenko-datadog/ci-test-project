@@ -4,29 +4,29 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.datadog.ci.test</groupId>
-    <artifactId>ci-test-project</artifactId>
+    <artifactId>java-maven-junit4</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>ci-test-project</name>
+    <name>java-maven-junit4</name>
 
     <modules>
         <module>module-a</module>
         <module>module-b</module>
-        <module>module-c</module>
     </modules>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <VERSION>1.6.0</VERSION>
+        <harnessArgLine></harnessArgLine>
+        <argLine></argLine>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.2</version>
+            <version>4.12</version>
         </dependency>
         <dependency>
             <groupId>pl.pragmatists</groupId>
@@ -34,69 +34,38 @@
             <version>1.0.5</version>
             <scope>test</scope>
         </dependency>
+       <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.26</version>
+        </dependency>
     </dependencies>
 
-    <profiles>
-        <profile>
-            <id>dd-civisibility</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <debug.arg>
-                </debug.arg>
-                <dd.java.agent.arg>
-                    -javaagent:${settings.localRepository}/com/datadoghq/dd-java-agent/${VERSION}/dd-java-agent-${VERSION}.jar
-                    -Ddd.civisibility.enabled=true
-                    -Ddd.service=nikita-ci-test
-                </dd.java.agent.arg>
-            </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>com.datadoghq</groupId>
-                    <artifactId>dd-java-agent</artifactId>
-                    <version>${VERSION}</version>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>com.datadoghq</groupId>
-                    <artifactId>dd-javac-plugin-client</artifactId>
-                    <version>0.1.0</version>
-                </dependency>
-            </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.5</version>
-                        <configuration>
-                            <annotationProcessorPaths>
-                                <annotationProcessorPath>
-                                    <groupId>com.datadoghq</groupId>
-                                    <artifactId>dd-javac-plugin</artifactId>
-                                    <version>0.1.0</version>
-                                </annotationProcessorPath>
-                            </annotationProcessorPaths>
-                            <compilerArgs>
-                                <arg>-Xplugin:DatadogCompilerPlugin</arg>
-                            </compilerArgs>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <argLine>
-                                ${debug.arg}
-                                ${dd.java.agent.arg}
-                            </argLine>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5</version>
+                <configuration>
+                        <testAnnotationProcessorPaths>
+                                <testAnnotationProcessorPath>
+                                        <groupId>org.projectlombok</groupId>
+                                        <artifactId>lombok</artifactId>
+                                        <version>1.18.26</version>
+                                </testAnnotationProcessorPath>
+                        </testAnnotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <argLine>${harnessArgLine}  @{argLine} </argLine>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

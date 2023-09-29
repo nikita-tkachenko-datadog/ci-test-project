@@ -87,8 +87,8 @@ public class ParameterizedCalculatorTest {
             "3, 4, 12",
     })
     public void shouldReturnCorrectMultiple(int first,
-                                       int second,
-                                       int expectedMultiple) {
+                                            int second,
+                                            int expectedMultiple) {
         Calculator calculator = new Calculator();
         assertEquals(expectedMultiple, calculator.multiply(first, second));
     }
