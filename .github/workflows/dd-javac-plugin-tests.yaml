@@ -5,6 +5,15 @@ on:
     branches:
       - '*'
 
+env:
+  DD_CIVISIBILITY_ENABLED: true
+  DD_CIVISIBILITY_AGENTLESS_ENABLED: true
+  DD_SITE: datad0g.com
+  DD_ENV: ci
+  DD_SERVICE: ci-test-project
+  DD_API_KEY: ${{ secrets.DD_API_KEY }}
+  DD_TRACER_FOLDER: /usr/local/bin
+
 jobs:
   run-tests:
     name: run-unit-tests
@@ -21,13 +30,9 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
           maven-version: ${{ matrix.maven }}
-      - name: Set DD agentless enabled
-        run: echo "DD_CIVISIBILITY_AGENTLESS_ENABLED=true" >> $GITHUB_ENV
-      - name: Set DD site
-        run: echo "DD_SITE=datad0g.com" >> $GITHUB_ENV
-      - name: Set DD env
-        run: echo "DD_ENV=local" >> $GITHUB_ENV
-      - name: Set DD API key
-        run: echo "DD_API_KEY=${{ secrets.DD_API_KEY }}" >> $GITHUB_ENV
+      - name: download Java tracer
+        run: |
+          wget -O $DD_TRACER_FOLDER/dd-java-agent.jar https://dtdg.co/latest-java-tracer
       - name: run-unit-tests
-        run: mvn clean test -Pdd-civisibility
+        run: |
+          MAVEN_OPTS=-javaagent:$DD_TRACER_FOLDER/dd-java-agent.jar mvn clean test
