@@ -30,9 +30,13 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
           maven-version: ${{ matrix.maven }}
+      - name: Print env
+        shell: bash
+        run: |
+          env
       - name: download Java tracer
         run: |
           wget -O $DD_TRACER_FOLDER/dd-java-agent.jar https://dtdg.co/latest-java-tracer
       - name: run-unit-tests
         run: |
-          env MAVEN_OPTS=-javaagent:$DD_TRACER_FOLDER/dd-java-agent.jar mvn clean test
+          MAVEN_OPTS=-javaagent:$DD_TRACER_FOLDER/dd-java-agent.jar mvn clean test
