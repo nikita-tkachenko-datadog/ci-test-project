@@ -15,10 +15,4 @@
     <name>module-a</name>
     <packaging>jar</packaging>
 
-    <dependencies>
-    </dependencies>
-
-    <profiles>
-    </profiles>
-
 </project>
