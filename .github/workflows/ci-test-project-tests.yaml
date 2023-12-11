@@ -12,6 +12,7 @@ env:
   DD_ENV: ci
   DD_SERVICE: ci-test-project
   DD_API_KEY: ${{ secrets.DD_API_KEY }}
+  CIRCLECI_TOKEN: ${{ secrets.CIRCLECI_TOKEN }}
   DD_TRACER_FOLDER: /usr/local/bin
 
 jobs:
