@@ -98,3 +98,5 @@ echo "Branch is $BRANCH"
 cd $DD_TRACER_FOLDER
 
 get_circleci_artifact "gh/DataDog/dd-trace-java" $WORKFLOW_NAME "build_lib" "libs/dd-java-agent-.*.jar" $BRANCH
+
+mv dd-java-agent-*.jar dd-java-agent.jar
