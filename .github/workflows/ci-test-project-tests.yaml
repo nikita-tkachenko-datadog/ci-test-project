@@ -14,6 +14,7 @@ env:
   DD_API_KEY: ${{ secrets.DD_API_KEY }}
   CIRCLECI_TOKEN: ${{ secrets.CIRCLECI_TOKEN }}
   DD_TRACER_FOLDER: /usr/local/bin
+  DD_CIVISIBILITY_FLAKY_RETRY_ENABLED: true
 
 jobs:
   run-tests:
