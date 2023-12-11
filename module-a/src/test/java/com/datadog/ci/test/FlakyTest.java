@@ -9,6 +9,6 @@ public class FlakyTest {
 
     @Test
     public void testFlaky() {
-        assertEquals(0, ThreadLocalRandom.current().nextInt(5));
+        assertEquals(0, ThreadLocalRandom.current().nextInt(6));
     }
 }

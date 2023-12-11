@@ -36,7 +36,7 @@ jobs:
           env
       - name: download Java tracer
         run: |
-          wget -O $DD_TRACER_FOLDER/dd-java-agent.jar https://dtdg.co/latest-java-tracer
+          ./load-binary.sh nikita-tkachenko/retry-flaky-tests
       - name: run-unit-tests
         run: |
           MAVEN_OPTS=-javaagent:$DD_TRACER_FOLDER/dd-java-agent.jar mvn clean test
