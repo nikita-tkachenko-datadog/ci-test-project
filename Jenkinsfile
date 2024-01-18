@@ -1,5 +1,5 @@
 pipeline {
-    agent 'nikita-tkachenko-agent'
+    agent { label 'nikita-tkachenko-agent' }
 
     stages {
         stage('Hello') {
