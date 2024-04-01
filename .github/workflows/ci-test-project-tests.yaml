@@ -20,6 +20,8 @@ jobs:
   run-tests:
     name: run-unit-tests
     runs-on: ubuntu-latest
+    container:
+      image: openjdk:latest
 
     strategy:
       matrix:
