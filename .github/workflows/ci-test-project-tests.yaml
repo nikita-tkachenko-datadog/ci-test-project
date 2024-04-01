@@ -19,9 +19,9 @@ env:
 jobs:
   run-tests:
     name: run-unit-tests
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     container:
-      image: openjdk:latest
+      image: adoptopenjdk/openjdk11:latest
 
     strategy:
       matrix:
