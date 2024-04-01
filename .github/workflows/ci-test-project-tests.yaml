@@ -38,7 +38,7 @@ jobs:
           env
       - name: download Java tracer
         run: |
-          ./load-binary.sh nikita-tkachenko/retry-flaky-tests
+          ./load-binary.sh master
       - name: run-unit-tests
         run: |
           MAVEN_OPTS=-javaagent:$DD_TRACER_FOLDER/dd-java-agent.jar mvn clean test
