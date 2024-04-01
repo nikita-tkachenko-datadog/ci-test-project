@@ -19,8 +19,6 @@ jobs:
   run-tests:
     name: run-unit-tests
     runs-on: ubuntu-latest
-    container:
-      image: adoptopenjdk/openjdk11:latest
 
     strategy:
       matrix:
