@@ -40,7 +40,7 @@ jobs:
           env
       - name: Install datadog libraries
         run: |
-          DD_INSTALL_ONLY=true DD_APM_INSTRUMENTATION_ENABLED=host DD_APM_INSTRUMENTATION_LANGUAGES=java ./install_script_agent7.sh
+          DD_INSTALL_ONLY=true DD_APM_INSTRUMENTATION_ENABLED=host DD_APM_INSTRUMENTATION_LANGUAGES=java bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script_agent7.sh)"
       - name: Run unit tests
         run: |
           mvn clean test
