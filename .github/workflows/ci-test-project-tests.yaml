@@ -36,9 +36,9 @@ jobs:
         shell: bash
         run: |
           env
-      - name: download Java tracer
+      - name: Install datadog libraries
         run: |
-          ./load-binary.sh master
-      - name: run-unit-tests
+          DD_INSTALL_ONLY=true DD_APM_INSTRUMENTATION_ENABLED=host bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script_agent7.sh)"
+      - name: Run unit tests
         run: |
-          MAVEN_OPTS=-javaagent:$DD_TRACER_FOLDER/dd-java-agent.jar mvn clean test
+          mvn clean test
