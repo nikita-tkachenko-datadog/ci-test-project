@@ -37,7 +37,11 @@ jobs:
       - name: Print env
         shell: bash
         run: |
-          env && which yum && which apt-get
+          env
+      - name: Print OS details
+        shell: bash
+        run: |
+          uname -a && cat /etc/*release
       - name: Install datadog libraries
         run: |
           DD_INSTALL_ONLY=true DD_APM_INSTRUMENTATION_ENABLED=host DD_APM_INSTRUMENTATION_LANGUAGES=java bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script_agent7.sh)"
