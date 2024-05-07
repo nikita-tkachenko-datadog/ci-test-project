@@ -5,10 +5,6 @@ on:
     branches:
       - '*'
 
-env:
-  DD_SERVICE: ci-test-project
-  DD_API_KEY: ${{ secrets.DD_API_KEY }}
-
 jobs:
   run-tests:
     name: run-unit-tests
@@ -28,9 +24,11 @@ jobs:
           java-version: ${{ matrix.java }}
           maven-version: ${{ matrix.maven }}
       - name: Configure Datadog Test Visibility
-        uses: nikita-tkachenko-datadog/gha-composite-test@v19
+        uses: nikita-tkachenko-datadog/gha-composite-test@v20
         with:
-          languages: 'java js'
+          languages: java
+          service-name: ci-test-project
+          api-key: ${{ secrets.DD_API_KEY }}
       - name: Run unit tests
         run: |
           mvn clean test
