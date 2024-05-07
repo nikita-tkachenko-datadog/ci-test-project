@@ -23,13 +23,5 @@ jobs:
         java: [ '11' ]
 
     steps:
-      - name: Setup Maven Action
-        uses: s4u/setup-maven-action@v1.2.1
-        with:
-          java-version: ${{ matrix.java }}
-          maven-version: ${{ matrix.maven }}
       - name: Configure Datadog Test Visibility
         uses: nikita-tkachenko-datadog/gha-composite-test@v7
-      - name: Run unit tests
-        run: |
-          mvn clean test
