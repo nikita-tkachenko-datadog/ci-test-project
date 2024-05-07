@@ -12,4 +12,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - id: foo
-        uses: nikita-tkachenko-datadog/gha-composite-test@v10
+        uses: nikita-tkachenko-datadog/gha-composite-test@v11
