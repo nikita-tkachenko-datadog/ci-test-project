@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - id: foo
-        uses: nikita-tkachenko-datadog/gha-composite-test@v2
+        uses: nikita-tkachenko-datadog/gha-composite-test@v3
         with:
           who-to-greet: 'Mona the Octocat'
       - run: echo random-number "$RANDOM_NUMBER"
