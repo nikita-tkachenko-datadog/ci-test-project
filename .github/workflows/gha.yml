@@ -30,7 +30,7 @@ jobs:
         uses: nikita-tkachenko-datadog/gha-composite-test@v21
         with:
           languages: java
-          service-name: ci-test-project
+          service-name: ci-test-project-gha
           api-key: ${{ secrets.DD_API_KEY }}
       - name: Run unit tests
         run: |
