@@ -5,6 +5,9 @@ on:
     branches:
       - '*'
 
+env:
+  DD_SITE: datad0g.com
+
 jobs:
   run-tests:
     name: run-unit-tests
