@@ -32,4 +32,6 @@ jobs:
         uses: nikita-tkachenko-datadog/gha-composite-test@v12
       - name: Run unit tests
         run: |
+          pwd
+          ls -la .datadog
           mvn clean test
