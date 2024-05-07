@@ -32,5 +32,4 @@ jobs:
         uses: nikita-tkachenko-datadog/gha-composite-test@v15
       - name: Run unit tests
         run: |
-          git status
           mvn clean test
