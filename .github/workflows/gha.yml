@@ -29,7 +29,7 @@ jobs:
           java-version: ${{ matrix.java }}
           maven-version: ${{ matrix.maven }}
       - name: Configure Datadog Test Visibility
-        uses: nikita-tkachenko-datadog/gha-composite-test@v16
+        uses: nikita-tkachenko-datadog/gha-composite-test@v17
       - name: Run unit tests
         run: |
           mvn clean test
