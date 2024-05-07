@@ -6,7 +6,6 @@ on:
       - '*'
 
 env:
-  DD_CIVISIBILITY_INSTRUMENTATION_LANGUAGES: java
   DD_SERVICE: ci-test-project
   DD_API_KEY: ${{ secrets.DD_API_KEY }}
 
@@ -29,7 +28,9 @@ jobs:
           java-version: ${{ matrix.java }}
           maven-version: ${{ matrix.maven }}
       - name: Configure Datadog Test Visibility
-        uses: nikita-tkachenko-datadog/gha-composite-test@v18
+        uses: nikita-tkachenko-datadog/gha-composite-test@v19
+        with:
+          languages: 'java js'
       - name: Run unit tests
         run: |
           mvn clean test
