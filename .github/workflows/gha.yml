@@ -11,5 +11,5 @@ jobs:
     name: A job to say hello
     steps:
       - uses: actions/checkout@v4
-      - name: Configure Datadog Test Visibility
+      - id: foo
         uses: nikita-tkachenko-datadog/gha-composite-test@v7
