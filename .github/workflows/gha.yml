@@ -7,11 +7,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - id: foo
-        uses: nikita-tkachenko-datadog/gha-composite-test@v1
+        uses: nikita-tkachenko-datadog/gha-composite-test@v2
         with:
           who-to-greet: 'Mona the Octocat'
       - run: echo random-number "$RANDOM_NUMBER"
         shell: bash
         env:
           RANDOM_NUMBER: ${{ steps.foo.outputs.random-number }}
-
+      - run: env
+        shell: bash
