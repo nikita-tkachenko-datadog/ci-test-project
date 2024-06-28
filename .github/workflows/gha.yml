@@ -1,6 +1,7 @@
 name: Run auto-instrumented unit tests
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - '*'
