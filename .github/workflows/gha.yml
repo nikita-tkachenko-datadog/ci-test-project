@@ -28,7 +28,7 @@ jobs:
           java-version: ${{ matrix.java }}
           maven-version: ${{ matrix.maven }}
       - name: Configure Datadog Test Visibility
-        uses: DataDog/test-visibility-github-action@v0.1
+        uses: test-visibility-github-action@v0.1
         with:
           languages: java
           service-name: ci-test-project-gha
