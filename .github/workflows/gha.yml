@@ -28,10 +28,10 @@ jobs:
           java-version: ${{ matrix.java }}
           maven-version: ${{ matrix.maven }}
       - name: Configure Datadog Test Visibility
-        uses: datadog/test-visibility-github-action@v0.1
+        uses: datadog/test-visibility-github-action@v1.0.1
         with:
           languages: java
-          service-name: ci-test-project-gha
+          service-name: ciapp-test-nikita
           api-key: ${{ secrets.DD_API_KEY }}
       - name: Run unit tests
         run: |
