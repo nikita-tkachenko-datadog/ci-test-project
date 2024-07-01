@@ -34,13 +34,13 @@ jobs:
           ls -la $GITHUB_WORKSPACE/.datadog
 
           echo 3 
-          find /github/workspace/.datadog -type f
+          find /github/workspace/.datadog/ -type f
 
           echo 4 
-          ls -la /github/workspace
+          ls -la /github/workspace/
 
           echo 5 
-          ls -la /github/workspace/.datadog
+          ls -la /github/workspace/.datadog/
       - name: Run containerized action
         id: run-containerized-action
         uses: nikita-tkachenko-datadog/github-container-action@main
