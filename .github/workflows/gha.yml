@@ -19,11 +19,6 @@ jobs:
         java: [ '11' ]
 
     steps:
-      - name: Setup Maven Action
-        uses: s4u/setup-maven-action@v1.2.1
-        with:
-          java-version: ${{ matrix.java }}
-          maven-version: ${{ matrix.maven }}
       - name: Configure Datadog Test Visibility
         uses: nikita-tkachenko-datadog/gha-composite-test@main
         with:
@@ -35,8 +30,14 @@ jobs:
         uses: nikita-tkachenko-datadog/github-container-action@main
         with:
           who-to-greet: Nikita
+      - name: Setup Maven Action
+        uses: s4u/setup-maven-action@v1.2.1
+        with:
+          java-version: ${{ matrix.java }}
+          maven-version: ${{ matrix.maven }}
       - name: Run unit tests
         run: |
+          find /github/workspace -type f
           mvn clean test
         env:
           DD_CIVISIBILITY_JACOCO_PLUGIN_VERSION: 0.8.11
