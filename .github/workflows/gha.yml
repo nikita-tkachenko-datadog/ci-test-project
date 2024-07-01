@@ -41,6 +41,12 @@ jobs:
 
           echo 5 
           ls -la /github/workspace/.datadog/
+          
+          echo 6
+          ls -la /github/workspace/.datadog/dd-java-agent.jar
+          
+          echo 7
+          java -jar /github/workspace/.datadog/dd-java-agent.jar
       - name: Setup Maven Action
         uses: s4u/setup-maven-action@v1.2.1
         with:
