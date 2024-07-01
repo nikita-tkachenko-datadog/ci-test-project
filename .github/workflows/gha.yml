@@ -37,7 +37,7 @@ jobs:
           maven-version: ${{ matrix.maven }}
       - name: Run unit tests
         run: |
-          ls -la /github/workspace
+          find /github/workspace/.datadog -type f
           mvn clean test
         env:
           DD_CIVISIBILITY_JACOCO_PLUGIN_VERSION: 0.8.11
