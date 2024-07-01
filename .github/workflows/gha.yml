@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Configure Datadog Test Visibility
-        uses: datadog/test-visibility-github-action@main
+        uses: nikita-tkachenko-datadog/gha-composite-test@main
         with:
           languages: java
           service-name: ciapp-test-nikita
