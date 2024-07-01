@@ -31,7 +31,7 @@ jobs:
           find $GITHUB_WORKSPACE/.datadog -type f
           
           echo 2
-          ls -la stat $GITHUB_WORKSPACE/.datadog
+          ls -la $GITHUB_WORKSPACE/.datadog
 
           echo 3 
           find /github/workspace/.datadog -type f
