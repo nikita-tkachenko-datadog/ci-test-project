@@ -27,8 +27,17 @@ jobs:
           api-key: ${{ secrets.DD_API_KEY }}
       - name: Look for tracer
         run: |
+          find $GITHUB_WORKSPACE/.datadog -type f
+          ls -la stat $GITHUB_WORKSPACE/.datadog
+          stat $GITHUB_WORKSPACE/.datadog
+          stat $GITHUB_WORKSPACE/.datadog/dd-java-agent.jar
+
           find /github/workspace/.datadog -type f
-          mvn clean test
+          ls -la /github/workspace
+          ls -la /github/workspace/.datadog
+          stat /github/workspace
+          stat /github/workspace/.datadog
+          stat /github/workspace/.datadog/dd-java-agent.jar
       - name: Run containerized action
         id: run-containerized-action
         uses: nikita-tkachenko-datadog/github-container-action@main
