@@ -19,6 +19,11 @@ jobs:
         java: [ '11' ]
 
     steps:
+      - name: Setup Maven Action
+        uses: s4u/setup-maven-action@v1.2.1
+        with:
+          java-version: ${{ matrix.java }}
+          maven-version: ${{ matrix.maven }}
       - name: Configure Datadog Test Visibility
         uses: nikita-tkachenko-datadog/gha-composite-test@main
         with:
@@ -44,22 +49,14 @@ jobs:
           
           echo 6
           ls -la /github/workspace/.datadog/dd-java-agent.jar
-          
-          echo 7
-          java -jar /github/workspace/.datadog/dd-java-agent.jar
-      - name: Setup Maven Action
-        uses: s4u/setup-maven-action@v1.2.1
+      - name: Run containerized action
+        id: run-containerized-action
+        uses: nikita-tkachenko-datadog/github-container-action@main
         with:
-          java-version: ${{ matrix.java }}
-          maven-version: ${{ matrix.maven }}
+          who-to-greet: Nikita
       - name: Run unit tests
         run: |
           find /github/workspace/.datadog -type f
           mvn clean test
         env:
           DD_CIVISIBILITY_JACOCO_PLUGIN_VERSION: 0.8.11
-      - name: Run containerized action
-        id: run-containerized-action
-        uses: nikita-tkachenko-datadog/github-container-action@main
-        with:
-          who-to-greet: Nikita
