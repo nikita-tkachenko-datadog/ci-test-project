@@ -30,25 +30,6 @@ jobs:
           languages: java
           service-name: ciapp-test-nikita
           api-key: ${{ secrets.DD_API_KEY }}
-      - name: Look for tracer
-        run: |
-          echo 1
-          find $GITHUB_WORKSPACE/.datadog -type f
-          
-          echo 2
-          ls -la $GITHUB_WORKSPACE/.datadog
-
-          echo 3 
-          find /github/workspace/.datadog/ -type f
-
-          echo 4 
-          ls -la /github/workspace/
-
-          echo 5 
-          ls -la /github/workspace/.datadog/
-          
-          echo 6
-          ls -la /github/workspace/.datadog/dd-java-agent.jar
       - name: Run containerized action
         id: run-containerized-action
         uses: nikita-tkachenko-datadog/github-container-action@main
