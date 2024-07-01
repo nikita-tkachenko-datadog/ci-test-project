@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Configure Datadog Test Visibility
-        uses: nikita-tkachenko-datadog/gha-composite-test@main
+        uses: datadog/test-visibility-github-action@main
         with:
           languages: java
           service-name: ciapp-test-nikita
@@ -37,7 +37,6 @@ jobs:
           maven-version: ${{ matrix.maven }}
       - name: Run unit tests
         run: |
-          find /github/workspace -type f
           mvn clean test
         env:
           DD_CIVISIBILITY_JACOCO_PLUGIN_VERSION: 0.8.11
