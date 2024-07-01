@@ -25,7 +25,7 @@ jobs:
           java-version: ${{ matrix.java }}
           maven-version: ${{ matrix.maven }}
       - name: Configure Datadog Test Visibility
-        uses: nikita-tkachenko-datadog/gha-composite-test@main
+        uses: datadog/test-visibility-github-action@main
         with:
           languages: java
           service-name: ciapp-test-nikita
